@@ -1,0 +1,5 @@
+# {{ ansible_managed }}
+
+{% for local,remote in msmtp_aliases %}
+{{ local }}: {% if remote is iterable and remote is not string %}{{ remote | join(', ') }}{% else %}{{ remote }}{% endif %}
+{% endfor %}

@@ -1,0 +1,4 @@
+---
+msmtp_defaults: {}
+msmtp_accounts: {}
+msmtp_aliases: {}
