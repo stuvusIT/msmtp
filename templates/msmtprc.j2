@@ -1,0 +1,16 @@
+# {{ ansible_managed }}
+
+defaults
+aliases /etc/msmtpaliases
+{% for key,value in msmtp_defaults.iteritems() %}
+{{ key }} {{ value }}
+{% endfor %}
+
+{% for name,acc in msmtp_accounts.iteritems() %}
+account {{ name }}{% if acc.parents is defined %} : {{ acc.parents | join(', ') }}{% endif %}
+
+{% for key,value in acc.iteritems() if key != 'parents' %}
+{{ key }} {{ value }}
+{% endfor %}
+
+{% endfor %}
