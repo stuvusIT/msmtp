@@ -2,14 +2,14 @@
 
 defaults
 aliases /etc/msmtpaliases
-{% for key,value in msmtp_defaults.iteritems() %}
+{% for key,value in msmtp_defaults.items() %}
 {{ key }} {{ value }}
 {% endfor %}
 
-{% for name,acc in msmtp_accounts.iteritems() %}
+{% for name,acc in msmtp_accounts.items() %}
 account {{ name }}{% if acc.parents is defined %} : {{ acc.parents | join(', ') }}{% endif %}
 
-{% for key,value in acc.iteritems() if key != 'parents' %}
+{% for key,value in acc.items() if key != 'parents' %}
 {{ key }} {{ value }}
 {% endfor %}
 
