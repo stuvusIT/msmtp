@@ -1,10 +1,9 @@
 ---
 - name: Install packages
   apt:
-    name: "{{ item }}"
-  with_items:
-    - msmtp
-    - msmtp-mta
+    name:
+      - msmtp
+      - msmtp-mta
 
 - name: Write configurations
   template:
